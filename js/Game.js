@@ -17,8 +17,8 @@ class Game {
    * @return  {Array}    An array of two Player objects.
    */
   createPlayers() {
-    const { value: player1 } = document.getElementById('player-1');
-    const { value: player2 } = document.getElementById('player-2');
+    const { value: player1 } = document.getElementById('player-1-name');
+    const { value: player2 } = document.getElementById('player-2-name');
 
     return [
       new Player(player1 ? player1 : "Player 1", 1, "#e15258", true),
@@ -136,6 +136,17 @@ class Game {
  */
   switchPlayers() {
     game.players.forEach(player => player.active = player.active ? false : true);
+
+    const player1Turn = document.getElementById('player-1-turn');
+    const player2Turn = document.getElementById('player-2-turn');
+
+    if (game.players[0].active) {
+      player1Turn.style.display = "block";
+      player2Turn.style.display = "none";
+    } else {
+      player1Turn.style.display = "none";
+      player2Turn.style.display = "block";
+    }
   }
 
   /** 
@@ -157,6 +168,7 @@ class Game {
     target.mark(token);
 
     if (this.checkForWin(target)) {
+      this.hidePlayersTurn();
       this.gameOver(`${token.owner.name} has won!`);
     } else {
       this.switchPlayers();
@@ -165,8 +177,20 @@ class Game {
         this.activePlayer.activeToken.drawHTMLToken();
         this.ready = true;
       } else {
+        this.hidePlayersTurn();
         this.gameOver(`All players have no more tokens`);
       }
+    }
+  }
+
+  /** 
+   * Hide players turn message 
+   */
+  hidePlayersTurn() {
+    const playerTurns = document.querySelectorAll('.player-turn');
+
+    for (const turn of playerTurns) {
+      turn.style.display = "none";
     }
   }
 }

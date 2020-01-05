@@ -18,6 +18,9 @@ body {
   width: 100%;
   position: relative;
   z-index: 9;
+  opacity: 0;
+  display: flex;
+  justify-content: space-around;
 }
 
 .table {
@@ -49,6 +52,8 @@ body {
   font-family: 'Wendy One', sans-serif;
 }
 
+/* PLAYERS */
+
 #player-names {
   margin-top: 25px;
   letter-spacing: 1px;;
@@ -65,6 +70,38 @@ body {
 
 #player-names input::placeholder {
   color: #aaa999;
+}
+
+.player {
+  margin-top: 100px;
+}
+
+.player .token {
+  position: static;
+  margin: 10px auto;
+}
+
+#player-1 .token {
+  background-color: #e15258;
+}
+
+#player-2 .token {
+  background-color: #e59a13;
+}
+
+#player-1-turn,
+#player-2-turn {
+  position: absolute;
+  top: 145px;
+}
+
+#player-1-turn {
+  left: 220px;
+}
+
+#player-2-turn {
+  display: none;
+  right: 220px;
 }
 
 /* BOARD AND PIECES */
@@ -92,10 +129,8 @@ body {
 }
 
 #play-area {
-  margin: 0 auto;
   width: 750px;
   margin-top: 100px;
-	opacity: 0;
 }
 
 .token {
@@ -167,7 +202,7 @@ circle {
 	display: none;
 	position: absolute;
 	z-index: 100;
-	top: -60px;
+	top: 40px;
 	left: 0;
 	right: 0;
 }

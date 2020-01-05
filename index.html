@@ -17,8 +17,8 @@
     <button id="begin-game">Start</button>
     <div id="player-names">
       <h3>Player Names</h3>
-      <input id="player-1" placeholder="Player 1..." />
-      <input id="player-2" placeholder="Player 2..." />
+      <input id="player-1-name" placeholder="Player 1..." />
+      <input id="player-2-name" placeholder="Player 2..." />
     </div>
   </div>
 
@@ -29,6 +29,11 @@
 			.stand-container: the board's vertical support stands
 		-->
   <div id="game-scene">
+    <div id="player-1" class="player">
+      <div class="name"></div>
+      <div class="token"></div>
+      <div id="player-1-turn" class="player-turn">&larr; Your Turn</div>
+    </div>
     <div id="play-area">
       <div class="stand-container left">
         <div class="stand-leg">
@@ -89,6 +94,11 @@
       </div>
 
       <div style="clear:both"></div>
+    </div>
+    <div id="player-2" class="player">
+      <div class="name"></div>
+      <div class="token"></div>
+      <div id="player-2-turn" class="player-turn">Your Turn &rarr;</div>
     </div>
   </div>
 
