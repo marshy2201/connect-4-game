@@ -5,6 +5,7 @@ class Player {
     this.color = color;
     this.active = active;
     this.tokens = this.createTokens(21);
+    this.wins = 0;
   }
 
   /** 

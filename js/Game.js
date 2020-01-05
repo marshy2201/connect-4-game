@@ -141,11 +141,11 @@ class Game {
     const player2Turn = document.getElementById('player-2-turn');
 
     if (game.players[0].active) {
-      player1Turn.style.display = "block";
-      player2Turn.style.display = "none";
+      player1Turn.style.opacity = 1;
+      player2Turn.style.opacity = 0;
     } else {
-      player1Turn.style.display = "none";
-      player2Turn.style.display = "block";
+      player1Turn.style.opacity = 0;
+      player2Turn.style.opacity = 1;
     }
   }
 
@@ -168,6 +168,8 @@ class Game {
     target.mark(token);
 
     if (this.checkForWin(target)) {
+      this.increaseActivePlayerWins(token.owner);
+
       this.hidePlayersTurn();
       this.gameOver(`${token.owner.name} has won!`);
     } else {
@@ -190,7 +192,7 @@ class Game {
     const playerTurns = document.querySelectorAll('.player-turn');
 
     for (const turn of playerTurns) {
-      turn.style.display = "none";
+      turn.style.opacity = 0;
     }
   }
 
@@ -207,7 +209,23 @@ class Game {
 
     document.getElementById('player-1-name').value = "";
     document.getElementById('player-2-name').value = "";
-    document.getElementById('player-1-turn').style.display = "block";
-    document.getElementById('player-2-turn').style.display = "none";
+    document.getElementById('player-1-turn').style.opacity = 1;
+    document.getElementById('player-2-turn').style.opacity = 0;
+    document.getElementById('player-1-wins').textContent = 0
+    document.getElementById('player-2-wins').textContent = 0;
+  }
+
+  /**
+   * Increase active players wins by 1 
+   * Update the HTML displaying players wins
+   */
+  increaseActivePlayerWins(owner) {
+    owner.wins++;
+    
+    if (game.activePlayer.id === 1) {
+      document.getElementById('player-1-wins').textContent = owner.wins;
+    } else {
+      document.getElementById('player-2-wins').textContent = owner.wins;
+    }
   }
 }
