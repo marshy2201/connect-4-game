@@ -36,4 +36,11 @@ class Board {
       }
     }
   }
+
+  /**
+   * Remove all tokens from the board
+   */
+  resetHTMLBoard() {
+    document.getElementById('game-board-underlay').innerHTML = '';
+  }
 }

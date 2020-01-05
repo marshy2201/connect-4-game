@@ -193,4 +193,21 @@ class Game {
       turn.style.display = "none";
     }
   }
+
+  /**
+   * Reset the game back to default
+   */
+  resetGame() {
+    game = new Game();
+    game.board.resetHTMLBoard();
+
+    document.getElementById('game-scene').style.opacity = 0;
+    document.getElementById('begin-game-wrapper').style.display = 'block';
+    document.getElementById('reset-game').style.display = "none";
+
+    document.getElementById('player-1-name').value = "";
+    document.getElementById('player-2-name').value = "";
+    document.getElementById('player-1-turn').style.display = "block";
+    document.getElementById('player-2-turn').style.display = "none";
+  }
 }

@@ -32,7 +32,9 @@
     <div id="player-1" class="player">
       <div class="name"></div>
       <div class="token"></div>
-      <div id="player-1-turn" class="player-turn">&larr; Your Turn</div>
+      <div id="player-1-turn" class="player-turn">
+        <span class="arrow">&uarr;</span><br> Your Turn
+      </div>
     </div>
     <div id="play-area">
       <div class="stand-container left">
@@ -98,7 +100,10 @@
     <div id="player-2" class="player">
       <div class="name"></div>
       <div class="token"></div>
-      <div id="player-2-turn" class="player-turn">Your Turn &rarr;</div>
+      <div id="player-2-turn" class="player-turn">
+        <span class="arrow">&uarr;</span><br>
+        Your Turn
+      </div>
     </div>
   </div>
 
@@ -107,6 +112,7 @@
 			.table: so the board doesn't look like it's floating
 		-->
   <div class="table">
+    <button id="reset-game">Reset Game</button>
   </div>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

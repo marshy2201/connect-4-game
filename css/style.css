@@ -20,7 +20,7 @@ body {
   z-index: 9;
   opacity: 0;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
 }
 
 .table {
@@ -40,7 +40,8 @@ body {
   z-index: 200;
 }
 
-#begin-game {
+#begin-game,
+#reset-game {
 	width: 200px;
 	background-color: #645a7e;
 	border-radius: 8px;
@@ -50,6 +51,12 @@ body {
 	border: none;
   font-size: 25px;
   font-family: 'Wendy One', sans-serif;
+}
+
+#reset-game {
+  background-color: #303853;
+  margin: 125px auto 0;
+  display: none;
 }
 
 /* PLAYERS */
@@ -74,11 +81,12 @@ body {
 
 .player {
   margin-top: 100px;
+  min-width: 115px;
 }
 
 .player .token {
   position: static;
-  margin: 10px auto;
+  margin: 25px auto 0;
 }
 
 #player-1 .token {
@@ -89,19 +97,18 @@ body {
   background-color: #e59a13;
 }
 
-#player-1-turn,
-#player-2-turn {
-  position: absolute;
-  top: 145px;
+.player-turn {
+  margin-top: 20px;
 }
 
-#player-1-turn {
-  left: 220px;
+.arrow {
+  display: inline-block;
+  margin-bottom: 10px;
+  font-size: 2.5rem;
 }
 
 #player-2-turn {
   display: none;
-  right: 220px;
 }
 
 /* BOARD AND PIECES */
@@ -131,6 +138,7 @@ body {
 #play-area {
   width: 750px;
   margin-top: 100px;
+  position: relative;
 }
 
 .token {
