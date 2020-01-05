@@ -28,22 +28,43 @@ body {
   height: 100%;
 }
 
+#begin-game-wrapper {
+  position: absolute;
+	left: 0;
+	right: 0;
+	margin: 0 auto;
+  top: 200px;
+  z-index: 200;
+}
+
 #begin-game {
 	width: 200px;
 	background-color: #645a7e;
 	border-radius: 8px;
   color: #fff;
 	padding: 25px;
-	position: absolute;
-	left: 0;
-	right: 0;
-	margin: 0 auto;
-	top: 200px;
-	z-index: 200;
 	cursor: pointer;
 	border: none;
-  font-family: 'Wendy One', sans-serif;
   font-size: 25px;
+  font-family: 'Wendy One', sans-serif;
+}
+
+#player-names {
+  margin-top: 25px;
+  letter-spacing: 1px;;
+}
+
+#player-names input {
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  font-size: 20px;
+  font-family: 'Wendy One', sans-serif;
+  text-align: center;
+}
+
+#player-names input::placeholder {
+  color: #aaa999;
 }
 
 /* BOARD AND PIECES */

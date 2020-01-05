@@ -1,6 +1,5 @@
 class Game {
   constructor() {
-    this.players = this.createPlayers();
     this.board = new Board();
     this.ready = false;
   }
@@ -18,9 +17,12 @@ class Game {
    * @return  {Array}    An array of two Player objects.
    */
   createPlayers() {
+    const { value: player1 } = document.getElementById('player-1');
+    const { value: player2 } = document.getElementById('player-2');
+
     return [
-      new Player("Lewis", 1, "#e15258", true),
-      new Player("Sophie", 2, "#e59a13")
+      new Player(player1 ? player1 : "Player 1", 1, "#e15258", true),
+      new Player(player2 ? player2 : "Player 2", 2, "#e59a13")
     ];
   }
 
@@ -28,6 +30,7 @@ class Game {
    * Initializes game. 
    */
   startGame() {
+    this.players = this.createPlayers();
     this.board.drawHTMLBoard();
     this.activePlayer.activeToken.drawHTMLToken();
     this.ready = true;
