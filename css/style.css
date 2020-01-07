@@ -29,6 +29,7 @@ body {
   width: 100%;
   position: fixed;
   height: 100%;
+  padding-top: 100px;
 }
 
 #begin-game-wrapper {
@@ -41,7 +42,8 @@ body {
 }
 
 #begin-game,
-#reset-game {
+#reset-game,
+#next-game {
 	width: 200px;
 	background-color: #645a7e;
 	border-radius: 8px;
@@ -53,10 +55,16 @@ body {
   font-family: 'Wendy One', sans-serif;
 }
 
-#reset-game {
+#reset-game,
+#next-game {
   background-color: #303853;
-  margin: 125px auto 0;
   display: none;
+  margin: 0 auto;
+}
+
+#next-game {
+  margin-bottom: 10px;
+  background-color: #747b92;
 }
 
 /* PLAYERS */

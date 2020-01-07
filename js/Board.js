@@ -26,6 +26,13 @@ class Board {
     return spaces;
   }
 
+  /**
+   * Reset the spaces property to new spaces
+   */
+  reCreateSpaces() {
+    this.spaces = this.createSpaces();
+  }
+
   /*
    * Render all SVG spaces 
    */

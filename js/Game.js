@@ -132,8 +132,8 @@ class Game {
   }
 
   /** 
- * Switches active player. 
- */
+   * Switches active player. 
+   */
   switchPlayers() {
     game.players.forEach(player => player.active = player.active ? false : true);
 
@@ -172,6 +172,8 @@ class Game {
 
       this.hidePlayersTurn();
       this.gameOver(`${token.owner.name} has won!`);
+      
+      document.getElementById('next-game').style.display = "block";
     } else {
       this.switchPlayers();
 
@@ -181,6 +183,8 @@ class Game {
       } else {
         this.hidePlayersTurn();
         this.gameOver(`All players have no more tokens`);
+
+        document.getElementById('next-game').style.display = "block";
       }
     }
   }
@@ -206,12 +210,13 @@ class Game {
     document.getElementById('game-scene').style.opacity = 0;
     document.getElementById('begin-game-wrapper').style.display = 'block';
     document.getElementById('reset-game').style.display = "none";
+    document.getElementById('next-game').style.display = "none";
 
     document.getElementById('player-1-name').value = "";
     document.getElementById('player-2-name').value = "";
     document.getElementById('player-1-turn').style.opacity = 1;
     document.getElementById('player-2-turn').style.opacity = 0;
-    document.getElementById('player-1-wins').textContent = 0
+    document.getElementById('player-1-wins').textContent = 0;
     document.getElementById('player-2-wins').textContent = 0;
   }
 
@@ -227,5 +232,27 @@ class Game {
     } else {
       document.getElementById('player-2-wins').textContent = owner.wins;
     }
+  }
+
+  /**
+   * Reset the board for the next game
+   * The loser starts first in the next game
+   */
+  nextGame() {
+    this.board.resetHTMLBoard();
+    this.board.reCreateSpaces();
+    this.board.drawHTMLBoard();
+
+    this.switchPlayers();
+
+    // Recreate players tokens
+    this.players.forEach(player => player.reCreateTokens());
+
+    this.activePlayer.activeToken.drawHTMLToken();
+    
+    document.getElementById('next-game').style.display = "none";
+    document.getElementById('game-over').style.display = "none";
+
+    this.ready = true;
   }
 }

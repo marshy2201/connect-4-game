@@ -41,6 +41,13 @@ class Player {
   }
 
   /**
+   * Reset the tokens property to new tokens
+   */
+  reCreateTokens() {
+    this.tokens = this.createTokens(21);
+  }
+
+  /**
    * Check if a player has any undropped tokens left
    * @return {Boolean} 
    */

@@ -28,5 +28,10 @@ document.addEventListener('keydown', function(event) {
  * Listen for click on `#reset-game` and call reset game on game object
  */
  const resetGame = document.getElementById('reset-game');
-
  resetGame.addEventListener('click', () => game.resetGame());
+
+ /**
+  * Listen for click `#next-game` and call next game on game object 
+  */
+ const nextGame = document.getElementById('next-game');
+ nextGame.addEventListener('click', () => game.nextGame());
