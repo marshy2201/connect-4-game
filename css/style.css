@@ -12,6 +12,9 @@ body {
   background: -webkit-linear-gradient(top, rgba(48,56,83,1) 0%,rgba(32,38,55,1) 100%); /* Chrome10-25,Safari5.1-6 */
   background: linear-gradient(to bottom, rgba(48,56,83,1) 0%,rgba(32,38,55,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#303853', endColorstr='#202637',GradientType=0 ); /* IE6-9 */
+  display: flex;
+  flex-direction: column;
+  max-height: 100vh;
 }
 
 #game-scene {
@@ -25,11 +28,13 @@ body {
 
 .table {
   background-color: #645a7e;
-  z-index: 10;
   width: 100%;
-  position: fixed;
-  height: 100%;
-  padding-top: 100px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  display: flex;
+  align-items: start;
+  justify-content: center;
+  flex: 1;
 }
 
 #begin-game-wrapper {
@@ -59,11 +64,10 @@ body {
 #next-game {
   background-color: #303853;
   display: none;
-  margin: 0 auto;
+  margin: 0 10px;
 }
 
 #next-game {
-  margin-bottom: 10px;
   background-color: #747b92;
 }
 
