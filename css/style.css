@@ -32,9 +32,17 @@ body {
   padding-top: 20px;
   padding-bottom: 20px;
   display: flex;
-  align-items: start;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   flex: 1;
+}
+
+.table div:first-child {
+  opacity: 0;
+}
+
+.table div:nth-child(2) {
+  display: flex;
 }
 
 #begin-game-wrapper {
@@ -78,7 +86,7 @@ body {
   letter-spacing: 1px;
 }
 
-#player-names input {
+#begin-game-wrapper input {
   padding: 10px;
   border-radius: 8px;
   border: none;
@@ -87,7 +95,7 @@ body {
   text-align: center;
 }
 
-#player-names input::placeholder {
+#begin-game-wrapper input::placeholder {
   color: #aaa999;
 }
 

@@ -7,14 +7,6 @@ const beginGame = document.getElementById('begin-game');
 
 beginGame.addEventListener('click', function() {
   game.startGame();
-
-  document.getElementById('begin-game-wrapper').style.display = 'none';
-  $('#game-scene').animate({ opacity: 1 }, 1000, () => {
-    document.getElementById('reset-game').style.display = "block";
-  });
-
-  document.querySelector('#player-1 .name').textContent = game.players[0].name;
-  document.querySelector('#player-2 .name').textContent = game.players[1].name;
 });
 
 /** 

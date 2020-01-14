@@ -20,6 +20,10 @@
       <input id="player-1-name" placeholder="Player 1..." />
       <input id="player-2-name" placeholder="Player 2..." />
     </div>
+    <div class="best-out-of">
+      <h3>Best Of</h3>
+      <input type="number" id="best-out-of" placeholder="3" min="2" />
+    </div>
   </div>
 
 
@@ -124,8 +128,13 @@
 			.table: so the board doesn't look like it's floating
 		-->
   <div class="table">
-    <button id="next-game">Next Game</button>
-    <button id="reset-game">Reset Game</button>
+    <div class="best-out-of">
+      <h4>Best Of <span></span></h4>
+    </div>
+    <div>
+      <button id="next-game">Next Game</button>
+      <button id="reset-game">Reset Game</button>
+    </div>
   </div>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

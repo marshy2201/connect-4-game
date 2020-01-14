@@ -2,6 +2,7 @@ class Game {
   constructor() {
     this.board = new Board();
     this.ready = false;
+    this.bestOf = 3;
   }
 
   /** 
@@ -10,6 +11,24 @@ class Game {
    */
   get activePlayer() {
     return this.players.find(player => player.active);
+  }
+
+  /**
+   * Returns boolean if the active player has won best of games
+   * @return {Boolean}
+   */
+  get activePlayerWonBestOf() {
+    return (this.bestOf / this.activePlayer.wins) < 2;
+  }
+
+  /**
+   * Returns boolean if the players have drawn
+   * @return {Boolean}
+   */
+  get gameDraw() {
+    const players = this.players.filter(player => player.wins === (this.bestOf / 2));
+
+    return players.length === 2 ? true : false;
   }
 
   /** 
@@ -31,8 +50,25 @@ class Game {
    */
   startGame() {
     this.players = this.createPlayers();
+
+    if (document.getElementById('best-out-of').value) {
+      this.bestOf = parseInt(document.getElementById('best-out-of').value);
+    }
+    
     this.board.drawHTMLBoard();
     this.activePlayer.activeToken.drawHTMLToken();
+
+    document.getElementById('begin-game-wrapper').style.display = 'none';
+    document.querySelector('.best-out-of span').textContent = this.bestOf;
+    document.querySelector('.table div:first-child').style.opacity = 1;
+
+    $('#game-scene').animate({ opacity: 1 }, 1000, () => {
+      document.getElementById('reset-game').style.display = "block";
+    });
+
+    document.querySelector('#player-1 .name').textContent = game.players[0].name;
+    document.querySelector('#player-2 .name').textContent = game.players[1].name;
+
     this.ready = true;
   }
 
@@ -169,11 +205,16 @@ class Game {
 
     if (this.checkForWin(target)) {
       this.increaseActivePlayerWins(token.owner);
-
       this.hidePlayersTurn();
-      this.gameOver(`${token.owner.name} has won!`);
       
-      document.getElementById('next-game').style.display = "block";
+      if (this.activePlayerWonBestOf) {
+        this.gameOver(`${this.activePlayer.name} has won best of ${this.bestOf}!`)
+      } else if (this.gameDraw) {
+        this.gameOver(`Its a draw!`);
+      } else {
+        this.gameOver(`${token.owner.name} has won!`);
+        document.getElementById('next-game').style.display = "block";
+      }
     } else {
       this.switchPlayers();
 
@@ -209,15 +250,19 @@ class Game {
 
     document.getElementById('game-scene').style.opacity = 0;
     document.getElementById('begin-game-wrapper').style.display = 'block';
+    document.querySelector('.table div:first-child').style.opacity = 0;
     document.getElementById('reset-game').style.display = "none";
     document.getElementById('next-game').style.display = "none";
+    document.getElementById('game-over').style.display = "none";
 
-    document.getElementById('player-1-name').value = "";
-    document.getElementById('player-2-name').value = "";
+    document.getElementById('player-1-name').value = null;
+    document.getElementById('player-2-name').value = null;
     document.getElementById('player-1-turn').style.opacity = 1;
     document.getElementById('player-2-turn').style.opacity = 0;
     document.getElementById('player-1-wins').textContent = 0;
     document.getElementById('player-2-wins').textContent = 0;
+
+    document.getElementById('best-out-of').value = null;
   }
 
   /**
