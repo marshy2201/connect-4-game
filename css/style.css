@@ -95,6 +95,10 @@ body {
   opacity: .5;
 }
 
+.arrow-button:focus {
+  outline: none;
+}
+
 /* PLAYERS */
 
 #player-names {
