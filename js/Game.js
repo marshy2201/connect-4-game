@@ -60,7 +60,8 @@ class Game {
 
     document.getElementById('begin-game-wrapper').style.display = 'none';
     document.querySelector('.best-out-of span').textContent = this.bestOf;
-    document.querySelector('.table div:first-child').style.opacity = 1;
+    document.querySelector('.table .best-out-of').style.opacity = 1;
+    document.querySelector('.arrow-buttons').style.opacity = 1;
 
     $('#game-scene').animate({ opacity: 1 }, 1000, () => {
       document.getElementById('reset-game').style.display = "block";
@@ -86,6 +87,25 @@ class Game {
         this.playToken();
       }
     }
+  }
+
+  /**
+   * Moves token depending on which arrow was clicked
+   */
+  handleArrowLeft() {
+    if (this.ready) {
+      this.activePlayer.activeToken.moveLeft();
+    }
+  }
+  handleArrowRight() {
+    if (this.ready) {
+      this.activePlayer.activeToken.moveRight(this.board.columns);
+    }
+  }
+  handleArrowDown() {
+    if (this.ready) {
+      this.playToken();
+    } 
   }
 
   /**
@@ -187,12 +207,15 @@ class Game {
 
   /** 
    * Displays game over message.
+   * Disable Arrow Buttons
    * @param {string} message - Game over message.      
    */
   gameOver(message) {
     const gameOver = document.getElementById('game-over');
     gameOver.textContent = message;
     gameOver.style.display = "block";
+
+    document.querySelectorAll('.arrow-button').forEach(button => button.disabled = true);
   }
 
   /** 
@@ -250,19 +273,20 @@ class Game {
 
     document.getElementById('game-scene').style.opacity = 0;
     document.getElementById('begin-game-wrapper').style.display = 'block';
-    document.querySelector('.table div:first-child').style.opacity = 0;
+    document.querySelector('.table .best-out-of').style.opacity = 0;
+    document.querySelector('.arrow-buttons').style.opacity = 0;
     document.getElementById('reset-game').style.display = "none";
     document.getElementById('next-game').style.display = "none";
     document.getElementById('game-over').style.display = "none";
-
     document.getElementById('player-1-name').value = null;
     document.getElementById('player-2-name').value = null;
     document.getElementById('player-1-turn').style.opacity = 1;
     document.getElementById('player-2-turn').style.opacity = 0;
     document.getElementById('player-1-wins').textContent = 0;
     document.getElementById('player-2-wins').textContent = 0;
-
     document.getElementById('best-out-of').value = null;
+
+    document.querySelectorAll('.arrow-button').forEach(button => button.disabled = false);
   }
 
   /**
@@ -297,6 +321,8 @@ class Game {
     
     document.getElementById('next-game').style.display = "none";
     document.getElementById('game-over').style.display = "none";
+
+    document.querySelectorAll('.arrow-button').forEach(button => button.disabled = false);
 
     this.ready = true;
   }

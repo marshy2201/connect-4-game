@@ -12,9 +12,18 @@ beginGame.addEventListener('click', function() {
 /** 
  * Listen for keyboard presses
  */
-document.addEventListener('keydown', function(event) {
-  game.handleKeyDown(event);
-});
+document.addEventListener('keydown', event => game.handleKeyDown(event));
+
+/**
+ * Listen for click on arrow buttons
+ */
+const arrowLeft = document.getElementById('arrow-left');
+const arrowRight = document.getElementById('arrow-right');
+const arrowDown = document.getElementById('arrow-down');
+
+arrowLeft.addEventListener('click', () => game.handleArrowLeft());
+arrowRight.addEventListener('click', () => game.handleArrowRight());
+arrowDown.addEventListener('click', () => game.handleArrowDown());
 
 /**
  * Listen for click on `#reset-game` and call reset game on game object

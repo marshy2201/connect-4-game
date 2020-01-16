@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>Four in a Row with Treehouse</title>
   <link href="https://fonts.googleapis.com/css?family=Wendy+One" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
   <link rel="stylesheet" type="text/css" href="css/style.css" />
 </head>
 
@@ -131,7 +132,18 @@
     <div class="best-out-of">
       <h4>Best Of <span></span></h4>
     </div>
-    <div>
+    <div class="arrow-buttons">
+      <button class="arrow-button" id="arrow-left">
+        <i class="fa fa-arrow-left"></i>
+      </button>
+      <button class="arrow-button" id="arrow-down">
+        <i class="fa fa-arrow-down"></i>
+      </button>
+      <button class="arrow-button" id="arrow-right">
+        <i class="fa fa-arrow-right"></i>
+      </button>
+    </div>
+    <div class="game-buttons">
       <button id="next-game">Next Game</button>
       <button id="reset-game">Reset Game</button>
     </div>
