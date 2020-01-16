@@ -97,6 +97,7 @@ body {
 
 .arrow-button:focus {
   outline: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 /* PLAYERS */
